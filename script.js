@@ -232,19 +232,45 @@
     // Bài đầu tiên cũng ngẫu nhiên
     currentTrack = Math.floor(Math.random() * playlist.length);
     loadTrack(currentTrack);
-    document.addEventListener('click', function firstClick() {
-        autoPlayMusic();
-        document.removeEventListener('click', firstClick);
-    }, { once: true });
-    document.addEventListener('touchstart', function firstTouch() {
-        autoPlayMusic();
-        document.removeEventListener('touchstart', firstTouch);
-    }, { once: true });
-    // Cũng thử play ngay (một số browser cho phép)
-    music.play().then(() => {
-        musicPlaying = true;
-        musicBtn.classList.add('playing');
-    }).catch(() => {});
+
+    // Thử play ngay (có tiếng). Nếu trình duyệt chặn -> fallback muted autoplay.
+    function tryPlayUnmuted() {
+        music.muted = false;
+        return music.play().then(() => {
+            musicPlaying = true;
+            musicBtn.classList.add('playing');
+        });
+    }
+
+    function tryPlayMuted() {
+        music.muted = true;
+        music.play().then(() => {
+            musicPlaying = true;
+            musicBtn.classList.add('playing');
+        }).catch(() => {});
+    }
+
+    tryPlayUnmuted().catch(() => tryPlayMuted());
+
+    // Khi user tương tác lần đầu -> bật tiếng (nếu đang muted) hoặc play (nếu bị chặn)
+    function unlockAudio() {
+        if (music.muted) music.muted = false;
+        if (music.paused) {
+            music.play().then(() => {
+                musicPlaying = true;
+                musicBtn.classList.add('playing');
+            }).catch(() => {});
+        } else {
+            musicPlaying = true;
+            musicBtn.classList.add('playing');
+        }
+        ['click', 'touchstart', 'scroll', 'keydown', 'mousemove'].forEach(ev => {
+            document.removeEventListener(ev, unlockAudio);
+        });
+    }
+    ['click', 'touchstart', 'scroll', 'keydown', 'mousemove'].forEach(ev => {
+        document.addEventListener(ev, unlockAudio, { passive: true });
+    });
 
     musicBtn.addEventListener('click', () => {
         if (musicPlaying) { music.pause(); musicBtn.classList.remove('playing'); }
