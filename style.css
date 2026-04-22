@@ -70,9 +70,24 @@ ul { list-style: none; }
 
 /* ===== HERO SECTION ===== */
 .hero {
-    position: relative; height: 100vh; display: flex;
-    align-items: center; justify-content: center; text-align: center;
-    background: url('images/top4.jpg') center 33%/cover no-repeat fixed;
+    position: relative; height: 100vh; height: 100dvh;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    overflow: hidden;
+    background: url('images/top4.jpg') center center / cover no-repeat;
+    background-attachment: fixed;
+}
+/* iOS Safari không hỗ trợ background-attachment: fixed đúng cách (bị zoom quá mức).
+   Trên mobile/tablet/touch: bỏ fixed, dùng scroll để ảnh đúng tỉ lệ với viewport. */
+@media (hover: none) and (pointer: coarse) {
+    .hero {
+        background-attachment: scroll;
+        background-position: center center;
+        background-size: cover;
+    }
+}
+/* Fallback cho màn hình nhỏ (phòng trường hợp media query trên không match) */
+@media (max-width: 1024px) {
+    .hero { background-attachment: scroll; }
 }
 .hero__overlay {
     position: absolute; inset: 0;
