@@ -418,7 +418,8 @@ ul { list-style: none; }
     display: inline-block; padding: 16px; background: #fff;
     border-radius: 16px; border: 2px solid var(--color-gold-light); margin-bottom: 20px;
 }
-.qr-section__qr svg { display: block; width: 280px; height: 280px; }
+.qr-section__qr svg,
+.qr-section__qr img { display: block; width: 280px; height: 280px; object-fit: contain; }
 .qr-section__name { font-family: var(--font-sans); font-weight: 600; font-size: 1.15rem; letter-spacing: 2px; margin-bottom: 6px; }
 .qr-section__bank { font-size: 1.05rem; color: var(--color-gold); font-weight: 500; }
 .qr-section__acc { font-size: 1.05rem; color: var(--color-text-light); margin-top: 6px; letter-spacing: 3px; }
