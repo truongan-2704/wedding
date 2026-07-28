@@ -347,12 +347,24 @@
         });
     }
 
-    // ===== MOBILE GALLERY SLIDER =====
+    // ===== MOBILE GALLERY SLIDER & SMOOTH TRANSITIONS =====
     const galleryMobileSlider = document.getElementById('galleryMobileSlider');
     const galleryMainImg = document.getElementById('galleryMainImg');
     const galleryThumbnails = document.querySelectorAll('.gallery__thumb');
     let currentGalleryIndex = 0;
     let galleryAutoSlideInterval;
+
+    // Preload tất cả ảnh album vào bộ nhớ cache để chuyển ảnh siêu mượt không delay
+    function preloadGalleryImages() {
+        galleryThumbnails.forEach(thumb => {
+            const src = thumb.dataset.src;
+            if (src) {
+                const img = new Image();
+                img.src = src;
+            }
+        });
+    }
+    preloadGalleryImages();
 
     // Click main image to open lightbox
     if (galleryMainImg) {
@@ -373,13 +385,18 @@
     });
 
     function updateGalleryImage() {
+        if (!galleryMainImg || galleryThumbnails.length === 0) return;
         const newSrc = galleryThumbnails[currentGalleryIndex].dataset.src;
-        galleryMainImg.style.opacity = '0.5';
+        
+        // Hiệu ứng mờ chuyển ảnh mượt mà tăng tốc phần cứng GPU
+        galleryMainImg.style.opacity = '0.1';
         
         setTimeout(() => {
             galleryMainImg.src = newSrc;
-            galleryMainImg.style.opacity = '1';
-        }, 250);
+            requestAnimationFrame(() => {
+                galleryMainImg.style.opacity = '1';
+            });
+        }, 180);
 
         // Update active thumbnail
         galleryThumbnails.forEach((thumb, i) => {
