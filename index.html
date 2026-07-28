@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Khắc Điệp & Yến Vi - Wedding</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23d4a5a5' d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="bgMusic" src="music/cuoithoi.mp3" autoplay loop preload="auto"></audio>
+    <button class="music-toggle" id="musicToggle" aria-label="Toggle music">♪</button>
+
+    <!-- Petal Effect Canvas -->
+    <canvas id="petalCanvas"></canvas>
+
+    <!-- ===== INTRO SCREEN - REALISTIC CLOUDS & ENVELOPE ===== -->
+    <div class="intro-screen" id="introScreen">
+        <!-- Intro Title -->
+        <div class="intro-title">Wedding Invitation</div>
+
+        <!-- Double Doors with 囍 Pattern (Horizontal Style) -->
+        <div class="door-container">
+            <div class="door door-left">
+                <div class="door-xi-circle">
+                    <div class="door-xi-half">囍</div>
+                </div>
+            </div>
+            <div class="door door-right">
+                <div class="door-xi-circle">
+                    <div class="door-xi-half">囍</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Realistic Clouds -->
+        <div class="intro-clouds" id="introClouds">
+            <div class="cloud cloud-left">
+                <span class="real-cloud c1"></span>
+                <span class="real-cloud c2"></span>
+                <span class="real-cloud c3"></span>
+                <span class="real-cloud c4"></span>
+                <span class="real-cloud c5"></span>
+                <span class="real-cloud c6"></span>
+                <span class="real-cloud c7"></span>
+                <span class="real-cloud c8"></span>
+            </div>
+            <div class="cloud cloud-right">
+                <span class="real-cloud c1"></span>
+                <span class="real-cloud c2"></span>
+                <span class="real-cloud c3"></span>
+                <span class="real-cloud c4"></span>
+                <span class="real-cloud c5"></span>
+                <span class="real-cloud c6"></span>
+                <span class="real-cloud c7"></span>
+                <span class="real-cloud c8"></span>
+            </div>
+        </div>
+
+        <!-- Envelope Invitation -->
+        <div class="envelope-wrapper" id="envelopeWrapper">
+            <p class="open-hint">Nhấn để mở thiệp</p>
+            
+            <div class="envelope" id="envelope" aria-label="Thiệp cưới">
+                <div class="envelope__body"></div>
+                <div class="envelope__flap"></div>
+                <div class="envelope__wax-seal">
+                    <div class="wax-seal">
+                        <span class="wax-seal__stamp">❤</span>
+                    </div>
+                </div>
+                <div class="envelope__label">Khắc Điệp & Yến Vi</div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav" id="nav">
+        <ul>
+            <li><a href="#hero">Trang chủ</a></li>
+            <li><a href="#couple">Cặp đôi</a></li>
+            <li><a href="#gallery">Album</a></li>
+            <li><a href="#event">Lễ cưới</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="hero">
+        <div class="hero__overlay"></div>
+        <div class="hero__content reveal">
+            <p class="hero__subtitle">We're Getting Married</p>
+            <h1 class="hero__names">
+                <span class="hero__name">Nguyễn Khắc Điệp</span>
+                <span class="hero__amp">&</span>
+                <span class="hero__name">Nguyễn Thị Yến Vi</span>
+            </h1>
+            <div class="hero__date">
+                <span class="hero__divider"></span>
+                <p>10 . 08 . 2026</p>
+                <span class="hero__divider"></span>
+            </div>
+            <a href="#couple" class="hero__cta" id="scrollBtn">Xem Thiệp</a>
+        </div>
+        <div class="hero__scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- ===== COUPLE SECTION ===== -->
+    <section class="section couple" id="couple">
+        <div class="container">
+            <div class="section__header reveal">
+                <p class="section__label">The Couple</p>
+                <h2 class="section__title">Chú Rể & Cô Dâu</h2>
+                <div class="section__ornament"></div>
+            </div>
+            <div class="couple__grid">
+                <div class="couple__card reveal reveal--left">
+                    <div class="couple__photo">
+                        <img src="images/8.jpg" alt="Chú rể" class="couple__img" decoding="async">
+                    </div>
+                    <h3 class="couple__name">Nguyễn Khắc Điệp</h3>
+                    <p class="couple__role">Chú Rể</p>
+                </div>
+                <div class="couple__card reveal reveal--right">
+                    <div class="couple__photo">
+                        <img src="images/10.jpg" alt="Cô dâu" class="couple__img" decoding="async">
+                    </div>
+                    <h3 class="couple__name">Nguyễn Thị Yến Vi</h3>
+                    <p class="couple__role">Cô Dâu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY SECTION ===== -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section__header reveal">
+                <p class="section__label">Our Moments</p>
+                <h2 class="section__title">Album Ảnh Cưới</h2>
+                <div class="section__ornament"></div>
+            </div>
+            
+            <!-- Mobile Gallery Slider -->
+            <div class="gallery__mobile-slider reveal" id="galleryMobileSlider">
+                <div class="gallery__main-image">
+                    <img src="images/2.jpg" alt="Wedding photo" id="galleryMainImg">
+                </div>
+                <div class="gallery__thumbnails" id="galleryThumbnails">
+                    <div class="gallery__thumb active" data-src="images/2.jpg">
+                        <img src="images/2.jpg" alt="Photo 1">
+                    </div>
+                    <div class="gallery__thumb" data-src="images/3.jpg">
+                        <img src="images/3.jpg" alt="Photo 2">
+                    </div>
+                    <div class="gallery__thumb" data-src="images/4.jpg">
+                        <img src="images/4.jpg" alt="Photo 3">
+                    </div>
+                    <div class="gallery__thumb" data-src="images/5.jpg">
+                        <img src="images/5.jpg" alt="Photo 4">
+                    </div>
+                    <div class="gallery__thumb" data-src="images/6.jpg">
+                        <img src="images/6.jpg" alt="Photo 5">
+                    </div>
+                    <div class="gallery__thumb" data-src="images/7.jpg">
+                        <img src="images/7.jpg" alt="Photo 6">
+                    </div>
+                    <div class="gallery__thumb" data-src="images/8.jpg">
+                        <img src="images/8.jpg" alt="Photo 7">
+                    </div>
+                    <div class="gallery__thumb" data-src="images/9.jpg">
+                        <img src="images/9.jpg" alt="Photo 8">
+                    </div>
+                    <div class="gallery__thumb" data-src="images/11.jpg">
+                        <img src="images/11.jpg" alt="Photo 9">
+                    </div>
+                    <div class="gallery__thumb" data-src="images/12.jpg">
+                        <img src="images/12.jpg" alt="Photo 10">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Gallery Grid -->
+            <div class="gallery__grid reveal">
+                <div class="gallery__item" data-src="images/2.jpg">
+                    <img src="images/2.jpg" alt="Wedding photo 1" decoding="async">
+                    <div class="gallery__overlay">
+                        <span class="gallery__icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery__item" data-src="images/3.jpg">
+                    <img src="images/3.jpg" alt="Wedding photo 2" decoding="async">
+                    <div class="gallery__overlay">
+                        <span class="gallery__icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery__item" data-src="images/4.jpg">
+                    <img src="images/4.jpg" alt="Wedding photo 3" decoding="async">
+                    <div class="gallery__overlay">
+                        <span class="gallery__icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery__item" data-src="images/5.jpg">
+                    <img src="images/5.jpg" alt="Wedding photo 4" decoding="async">
+                    <div class="gallery__overlay">
+                        <span class="gallery__icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery__item" data-src="images/6.jpg">
+                    <img src="images/6.jpg" alt="Wedding photo 5" decoding="async">
+                    <div class="gallery__overlay">
+                        <span class="gallery__icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery__item" data-src="images/7.jpg">
+                    <img src="images/7.jpg" alt="Wedding photo 6" decoding="async">
+                    <div class="gallery__overlay">
+                        <span class="gallery__icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery__item" data-src="images/8.jpg">
+                    <img src="images/8.jpg" alt="Wedding photo 7" decoding="async">
+                    <div class="gallery__overlay">
+                        <span class="gallery__icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery__item" data-src="images/9.jpg">
+                    <img src="images/9.jpg" alt="Wedding photo 8" decoding="async">
+                    <div class="gallery__overlay">
+                        <span class="gallery__icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery__item" data-src="images/11.jpg">
+                    <img src="images/11.jpg" alt="Wedding photo 9" decoding="async">
+                    <div class="gallery__overlay">
+                        <span class="gallery__icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery__item" data-src="images/12.jpg">
+                    <img src="images/12.jpg" alt="Wedding photo 10" decoding="async">
+                    <div class="gallery__overlay">
+                        <span class="gallery__icon">🔍</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox__close" id="lightboxClose">&times;</button>
+        <button class="lightbox__prev" id="lightboxPrev">&#10094;</button>
+        <button class="lightbox__next" id="lightboxNext">&#10095;</button>
+        <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    </div>
+
+    <!-- ===== EVENT SECTION ===== -->
+    <section class="section event" id="event">
+        <div class="container">
+            <div class="section__header reveal">
+                <p class="section__label">Save The Date</p>
+                <h2 class="section__title">Thông Tin Lễ Cưới</h2>
+                <div class="section__ornament"></div>
+            </div>
+
+            <!-- Thông tin gia đình - luxury layout -->
+            <div class="family-luxury reveal">
+                <div class="family-luxury__side">
+                    <p class="family-luxury__label">Nhà Trai</p>
+                    <p class="family-luxury__parents">Ông <strong>Nguyễn Việt Cường</strong></p>
+                    <p class="family-luxury__parents">Bà <strong>Nguyễn Thị Hà</strong></p>
+                    <p class="family-luxury__address">Mỹ Thành, Ân Hảo, Gia Lai</p>
+                    <div class="family-luxury__divider"></div>
+                    <p class="family-luxury__rank">Trưởng Nam</p>
+                    <h3 class="family-luxury__name">Nguyễn Khắc Điệp</h3>
+                </div>
+
+                <div class="family-luxury__center">
+                    <div class="family-luxury__ornament-top">✦</div>
+                    <div class="family-luxury__heart">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="var(--color-gold)" stroke="none">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <div class="family-luxury__ornament-bottom">✦</div>
+                </div>
+
+                <div class="family-luxury__side">
+                    <p class="family-luxury__label">Nhà Gái</p>
+                    <p class="family-luxury__parents">Ông <strong>Nguyễn Văn Sơn</strong></p>
+                    <p class="family-luxury__parents">Bà <strong>Võ Thị Thủy</strong></p>
+                    <p class="family-luxury__address">Thôn Bình Hòa, Ân Hảo, Gia Lai</p>
+                    <div class="family-luxury__divider"></div>
+                    <p class="family-luxury__rank">Thứ Nữ</p>
+                    <h3 class="family-luxury__name">Nguyễn Thị Yến Vi</h3>
+                </div>
+            </div>
+
+            <!-- Ultra-Minimal Luxury Ceremony Card -->
+            <div class="ceremony-unified reveal">
+                <!-- Header: Minimal Editorial Date -->
+                <div class="ceremony-unified__header">
+                    <span class="ceremony-tagline">SAVE THE DATE</span>
+                    <h3 class="ceremony-unified__date">Thứ Hai, 10 . 08 . 2026</h3>
+                    <p class="ceremony-unified__lunar">Nhằm ngày 28 tháng 06 năm Bính Ngọ</p>
+                    <div class="ceremony-divider-line"></div>
+                </div>
+
+                <!-- Side by Side Event Columns -->
+                <div class="ceremony-unified__body">
+                    <!-- Column 1: Lễ Vu Quy (Nhà Gái) -->
+                    <div class="ceremony-column">
+                        <div class="ceremony-column__header side-pink">
+                            <span class="ceremony-column__subtitle">NHÀ GÁI</span>
+                            <h4 class="ceremony-column__title">LỄ VU QUY</h4>
+                        </div>
+                        
+                        <div class="ceremony-timeline">
+                            <div class="ceremony-item">
+                                <span class="ceremony-item__time">08:00</span>
+                                <div class="ceremony-item__info">
+                                    <h5>Hôn Lễ Tại Tư Gia</h5>
+                                    <p>Thôn Bình Hòa, Ân Hảo, Gia Lai</p>
+                                </div>
+                            </div>
+                            <div class="ceremony-item highlight">
+                                <span class="ceremony-item__time">09:00</span>
+                                <div class="ceremony-item__info">
+                                    <h5>Đón Tiệc Cưới</h5>
+                                    <p>Tại Nhà Văn Hóa</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="https://maps.google.com/?q=Thôn+Bình+Hòa,+Ân+Hảo,+Gia+Lai" target="_blank" class="ceremony-map-btn">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Xem Bản Đồ Nhà Gái</span>
+                        </a>
+                    </div>
+
+                    <!-- Center Vertical Divider -->
+                    <div class="ceremony-unified__divider-v">
+                        <span class="divider-dot"></span>
+                    </div>
+
+                    <!-- Column 2: Lễ Thành Hôn (Nhà Trai) -->
+                    <div class="ceremony-column">
+                        <div class="ceremony-column__header side-gold">
+                            <span class="ceremony-column__subtitle">NHÀ TRAI</span>
+                            <h4 class="ceremony-column__title">LỄ THÀNH HÔN</h4>
+                        </div>
+                        
+                        <div class="ceremony-timeline">
+                            <div class="ceremony-item">
+                                <span class="ceremony-item__time">12:00</span>
+                                <div class="ceremony-item__info">
+                                    <h5>Hôn Lễ Tại Tư Gia</h5>
+                                    <p>Thôn Mỹ Thành, Ân Hảo, Gia Lai</p>
+                                </div>
+                            </div>
+                            <div class="ceremony-item highlight">
+                                <span class="ceremony-item__time">14:00</span>
+                                <div class="ceremony-item__info">
+                                    <h5>Đón Tiệc Cưới</h5>
+                                    <p>Tại Trụ Sở</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="https://maps.google.com/?q=Thôn+Mỹ+Thành,+Ân+Hảo,+Gia+Lai" target="_blank" class="ceremony-map-btn">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Xem Bản Đồ Nhà Trai</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COUNTDOWN SECTION ===== -->
+    <section class="section countdown" id="countdown">
+        <div class="container">
+            <div class="section__header reveal">
+                <p class="section__label">Counting Down</p>
+                <h2 class="section__title">Đếm Ngược Ngày Trọng Đại</h2>
+                <div class="section__ornament"></div>
+            </div>
+            <div class="countdown__timer reveal" id="countdownTimer">
+                <div class="countdown__item">
+                    <span class="countdown__number" id="cdDays">000</span>
+                    <span class="countdown__label">Ngày</span>
+                </div>
+                <div class="countdown__sep">:</div>
+                <div class="countdown__item">
+                    <span class="countdown__number" id="cdHours">00</span>
+                    <span class="countdown__label">Giờ</span>
+                </div>
+                <div class="countdown__sep">:</div>
+                <div class="countdown__item">
+                    <span class="countdown__number" id="cdMins">00</span>
+                    <span class="countdown__label">Phút</span>
+                </div>
+                <div class="countdown__sep">:</div>
+                <div class="countdown__item">
+                    <span class="countdown__number" id="cdSecs">00</span>
+                    <span class="countdown__label">Giây</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMPACT QR TRANSFER SECTION ===== -->
+    <section class="section qr-section" id="gift">
+        <div class="container">
+            <div class="section__header reveal">
+                <p class="section__label">Wedding Gift</p>
+                <h2 class="section__title">Mừng Cưới</h2>
+                <div class="section__ornament"></div>
+            </div>
+            
+            <!-- Luxury Centered Gift Card -->
+            <div class="qr-luxury-wrapper reveal">
+                <div class="qr-luxury-card">
+                    <!-- Top Floral Ornament -->
+                    <div class="qr-luxury__header">
+                        <span class="qr-luxury__symbol">💝</span>
+                        <p class="qr-luxury__desc">Thay cho phong bì truyền thống, bạn có thể gửi lời chúc mừng qua chuyển khoản ngân hàng</p>
+                        <div class="qr-luxury__ornament">✦ ─── ❀ ─── ✦</div>
+                    </div>
+
+                    <!-- Centered Large QR Code -->
+                    <div class="qr-luxury__frame">
+                        <img src="images/qr.jpg" alt="QR chuyển khoản" class="qr-luxury__img" decoding="async">
+                        <div class="qr-luxury__corner top-left">✦</div>
+                        <div class="qr-luxury__corner top-right">✦</div>
+                        <div class="qr-luxury__corner bottom-left">✦</div>
+                        <div class="qr-luxury__corner bottom-right">✦</div>
+                    </div>
+
+                    <!-- Clean Centered Account Info -->
+                    <div class="qr-luxury__info">
+                        <h4 class="qr-luxury__name">NGUYEN KHAC DIEP</h4>
+                        <div class="qr-luxury__bank-row">
+                            <span class="qr-luxury__bank">MOMO</span>
+                            <span class="qr-luxury__dot">•</span>
+                            <span class="qr-luxury__acc" id="accNumber">096 9173 413</span>
+                            <button class="qr-copy-icon-btn" id="copyAccBtn" type="button" title="Sao chép số tài khoản">📋</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GUESTBOOK SECTION ===== -->
+    <section class="section guestbook" id="guestbook">
+        <div class="container">
+            <div class="section__header reveal">
+                <p class="section__label">Wishes</p>
+                <h2 class="section__title">Lời Chúc Mừng</h2>
+                <div class="section__ornament"></div>
+            </div>
+
+            <!-- Luxury Wishes Marquee Showcase (ABOVE BUTTON) -->
+            <div class="guestbook__wishes-container reveal">
+                <div class="guestbook__wishes-track" id="guestbookCredits"></div>
+            </div>
+
+            <!-- Luxury Blooming Floral Button Box (BELOW WISHES) -->
+            <div class="guestbook__trigger-wrapper reveal">
+                <div class="guestbook__luxury-btn-box">
+                    <!-- Left Blooming Flower SVG -->
+                    <div class="flower-bloom flower-left">
+                        <svg viewBox="0 0 100 100" width="42" height="42" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="petalGradLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffb7d5"/>
+                                    <stop offset="50%" stop-color="#e91e63"/>
+                                    <stop offset="100%" stop-color="#880e4f"/>
+                                </linearGradient>
+                                <linearGradient id="goldStem" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#fff0b3"/>
+                                    <stop offset="50%" stop-color="#f3c649"/>
+                                    <stop offset="100%" stop-color="#946313"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M 28,68 C 8,62 3,42 23,47 C 33,52 28,68 28,68 Z" fill="#81c784" opacity="0.9"/>
+                            <path d="M 72,68 C 92,62 97,42 77,47 C 67,52 72,68 72,68 Z" fill="#66bb6a" opacity="0.9"/>
+                            <g class="petal-layer-outer" fill="url(#petalGradLeft)">
+                                <circle cx="50" cy="26" r="14"/>
+                                <circle cx="74" cy="50" r="14"/>
+                                <circle cx="50" cy="74" r="14"/>
+                                <circle cx="26" cy="50" r="14"/>
+                                <circle cx="33" cy="33" r="14"/>
+                                <circle cx="67" cy="33" r="14"/>
+                                <circle cx="67" cy="67" r="14"/>
+                                <circle cx="33" cy="67" r="14"/>
+                            </g>
+                            <g class="petal-layer-inner" fill="#ff80ab">
+                                <circle cx="50" cy="35" r="10"/>
+                                <circle cx="65" cy="50" r="10"/>
+                                <circle cx="50" cy="65" r="10"/>
+                                <circle cx="35" cy="50" r="10"/>
+                            </g>
+                            <circle cx="50" cy="50" r="9" fill="url(#goldStem)"/>
+                            <circle cx="50" cy="50" r="4" fill="#ffffff"/>
+                        </svg>
+                    </div>
+
+                    <!-- Main Luxury Button -->
+                    <button class="guestbook__open-btn luxury-btn" id="openWishModalBtn" type="button">
+                        <span class="btn-shimmer"></span>
+                        <span class="guestbook__btn-text">Gửi Lời Chúc Mừng 💌</span>
+                    </button>
+
+                    <!-- Right Blooming Flower SVG -->
+                    <div class="flower-bloom flower-right">
+                        <svg viewBox="0 0 100 100" width="42" height="42" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="petalGradRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffb7d5"/>
+                                    <stop offset="50%" stop-color="#e91e63"/>
+                                    <stop offset="100%" stop-color="#880e4f"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M 28,68 C 8,62 3,42 23,47 C 33,52 28,68 28,68 Z" fill="#66bb6a" opacity="0.9"/>
+                            <path d="M 72,68 C 92,62 97,42 77,47 C 67,52 72,68 72,68 Z" fill="#81c784" opacity="0.9"/>
+                            <g class="petal-layer-outer" fill="url(#petalGradRight)">
+                                <circle cx="50" cy="26" r="14"/>
+                                <circle cx="74" cy="50" r="14"/>
+                                <circle cx="50" cy="74" r="14"/>
+                                <circle cx="26" cy="50" r="14"/>
+                                <circle cx="33" cy="33" r="14"/>
+                                <circle cx="67" cy="33" r="14"/>
+                                <circle cx="67" cy="67" r="14"/>
+                                <circle cx="33" cy="67" r="14"/>
+                            </g>
+                            <g class="petal-layer-inner" fill="#ff80ab">
+                                <circle cx="50" cy="35" r="10"/>
+                                <circle cx="65" cy="50" r="10"/>
+                                <circle cx="50" cy="65" r="10"/>
+                                <circle cx="35" cy="50" r="10"/>
+                            </g>
+                            <circle cx="50" cy="50" r="9" fill="url(#goldStem)"/>
+                            <circle cx="50" cy="50" r="4" fill="#ffffff"/>
+                        </svg>
+                    </div>
+
+                    <!-- Top & Bottom Golden Floral Vine Border Accents -->
+                    <svg class="floral-vine vine-top" viewBox="0 0 320 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 10,10 Q 80,2 160,10 T 310,10" stroke="url(#goldStem)" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="60" cy="6" r="3.5" fill="#e91e63"/>
+                        <circle cx="160" cy="10" r="4.5" fill="#f3c649"/>
+                        <circle cx="260" cy="6" r="3.5" fill="#e91e63"/>
+                    </svg>
+                    <svg class="floral-vine vine-bottom" viewBox="0 0 320 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 10,10 Q 80,18 160,10 T 310,10" stroke="url(#goldStem)" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="60" cy="14" r="3.5" fill="#e91e63"/>
+                        <circle cx="160" cy="10" r="4.5" fill="#f3c649"/>
+                        <circle cx="260" cy="14" r="3.5" fill="#e91e63"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RSVP SECTION (XÁC NHẬN THAM DỰ AT THE END) ===== -->
+    <section class="section rsvp" id="rsvp">
+        <div class="container">
+            <div class="section__header reveal">
+                <p class="section__label">R S V P</p>
+                <h2 class="section__title">Xác Nhận Tham Dự</h2>
+                <div class="section__ornament"></div>
+            </div>
+            <div class="rsvp-card-modern reveal">
+                <form class="rsvp-modern-form" id="rsvpForm">
+                    <!-- Row 1: Name & Side -->
+                    <div class="rsvp-row">
+                        <div class="rsvp-field">
+                            <input type="text" id="rsvpName" placeholder="Họ và tên của bạn *" required>
+                        </div>
+                        <div class="rsvp-field">
+                            <div class="rsvp-pills">
+                                <label class="rsvp-pill">
+                                    <input type="radio" name="rsvpSide" value="groom" required checked>
+                                    <span>Khách Nhà Trai</span>
+                                </label>
+                                <label class="rsvp-pill">
+                                    <input type="radio" name="rsvpSide" value="bride">
+                                    <span>Khách Nhà Gái</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Attendance & Guests -->
+                    <div class="rsvp-row">
+                        <div class="rsvp-field">
+                            <div class="rsvp-pills">
+                                <label class="rsvp-pill">
+                                    <input type="radio" name="rsvpAttend" value="yes" required checked>
+                                    <span>Sẽ Tham Dự</span>
+                                </label>
+                                <label class="rsvp-pill">
+                                    <input type="radio" name="rsvpAttend" value="no">
+                                    <span>Rất Tiếc Vắng Mặt</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="rsvp-field">
+                            <select id="rsvpGuests">
+                                <option value="1">1 người tham dự</option>
+                                <option value="2">2 người tham dự</option>
+                                <option value="3">3 người tham dự</option>
+                                <option value="4">4 người tham dự</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Submit Button -->
+                    <button type="submit" class="rsvp-submit-btn">
+                        <span>Gửi Xác Nhận Tham Dự</span> ✨
+                    </button>
+                </form>
+
+                <div class="rsvp__success" id="rsvpSuccess" style="display:none;">
+                    <div class="rsvp__success-icon">✓</div>
+                    <p>Cảm ơn bạn đã xác nhận! Chúng mình rất vui được đón tiếp bạn.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Popup for Guestbook Form -->
+    <div class="wish-modal" id="wishModal" aria-hidden="true">
+        <div class="wish-modal__overlay" id="wishModalOverlay"></div>
+        <div class="wish-modal__card">
+            <button class="wish-modal__close" id="closeWishModalBtn" aria-label="Đóng">&times;</button>
+            <div class="wish-modal__header">
+                <span class="wish-modal__symbol">💌</span>
+                <h3 class="wish-modal__title">Gửi Lời Chúc Mừng</h3>
+                <p class="wish-modal__subtitle">Dành tặng cho Nguyễn Khắc Điệp & Nguyễn Thị Yến Vi</p>
+                <div class="wish-modal__ornament">✦ ─── ❀ ─── ✦</div>
+            </div>
+            <form class="guestbook__form" id="guestbookForm">
+                <div class="rsvp__group">
+                    <label class="rsvp__label" for="wishName">Tên của bạn *</label>
+                    <input type="text" id="wishName" placeholder="Nhập tên của bạn..." required>
+                </div>
+                <div class="rsvp__group">
+                    <label class="rsvp__label" for="wishMessage">Lời chúc mừng *</label>
+                    <textarea id="wishMessage" placeholder="Viết lời chúc yêu thương gửi đến cặp đôi..." rows="4" required></textarea>
+                </div>
+                <button type="submit" class="rsvp__btn wish-modal__submit">Gửi Lời Chúc ❤️</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__bg">
+            <img src="images/3.JPG" alt="Wedding Footer Background" decoding="async">
+            <div class="footer__overlay"></div>
+        </div>
+        <div class="container footer__container">
+            <p class="footer__names"><span class="footer__name">Nguyễn&nbsp;Khắc&nbsp;Điệp</span> <span class="footer__amp">&amp;</span> <span class="footer__name">Nguyễn&nbsp;Thị&nbsp;Yến&nbsp;Vi</span></p>
+            <p class="footer__date">10 . 08 . 2026</p>
+            <p class="footer__thanks">Cảm ơn bạn đã gửi những lời chúc tốt đẹp nhất đến chúng mình! ❤️</p>
+        </div>
+    </footer>
+
+    </div>
+    <!-- End Main Content -->
+
+    <script src="script.js"></script>
+</body>
+</html>
